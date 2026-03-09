@@ -1,23 +1,267 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <nav>
+      <div class="nav-wrapper teal" style="padding-left: 10px">
+        <a href="#!" class="brand-logo">Ajax Demo</a>
+      </div>
+    </nav>
+    <main class="row" style="padding: 40px">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>Type</th>
+            <th>website</th>
+          </tr>
+        </thead>
+        <tbody id="result"></tbody>
+      </table>
+    </main>
     <h1>My Page</h1>
 
-    <input type="button" id="alertBtn" value="alert" onclick="alertFun()"/>
-    <input type="button" value="confirm" onclick="confirmFun()"/>
-    <input type="button" value="prompt" onclick="promptFun()"/>
-
+    <input type="button" id="alertBtn" value="alert" onclick="alertFun()" />
+    <input type="button" value="confirm" onclick="confirmFun()" />
+    <input type="button" value="prompt" onclick="promptFun()" />
+    <input id="myBtn" type="button" onclick="myFun()" value="click me" />
     <span id="result"></span>
 
     <script>
+                               /*function alertFun() {
+                                 alert("Hello !");
+                               }
 
+                               function confirmFun() {
+                                 let didConfirm = confirm("Are you sure about that?");
+                                 if (didConfirm) {
+                                   alert("You confirmed :)");
+                                 } else {
+                                   alert("You did not confirm :(");
+                                 }
+                               }
 
+                               function promptFun() {
+                                 let val = prompt("What is your name?");
+                                 alert(`You've entered: ${val}`);
+                               }
+
+                               console.log(window.navigator.cookieEnabled);
+                               console.log(window.navigator.onLine);
+                               console.log(navigator.appVersion);
+                               console.log(navigator.userAgent);
+                               console.log(navigator.platform);
+
+                               //get window metadata using window
+                               console.log(window.location.href); //get full url
+                               console.log(window.location.protocol);
+                               console.log(window.location.hostname);
+
+                               function redirect(url) {
+                                 window.location.assign(url); //redirects the page to another url
+                               }
+
+                               window.onload = function (event) {
+                                 console.log("Page has loaded");
+                                 //do other javascript stuff here
+                               };
+
+                               var bob = "bob";
+                               const sally = "sally";
+
+                               console.log(window.bob === bob); //true
+                               console.log(window.sally === sally); //false
+
+                               var document = "hello this is my variable";
+                               console.log(document); //give the DOM object instead
+                               console.log(window.document === document);
+
+                               const result = document.querySelector("#result");
+                               console.log(result);
+
+                               console.log(result.style); //shows all the styles of the object
+
+                               result.style.backgroundColor = "lightgrey";
+                               console.log(result.getAttribute("id")); //result
+
+                               result.removeAttribute("id"); //removes an attribute
+                               result.setAttribute("id", "result"); //sets an attribute
+
+                               result.classList.add("content"); //adds a class
+                               result.classList.remove("content");
+
+                               const result = document.querySelector("#result");
+                               result.innerHTML = "<h2>My Span</h2>";
+                               result.style.color = "blue";
+
+                               function myFun() {
+                                 alert("hello");
+                               }
+
+                               function myFun2() {
+                                 console.log("myFun2 called");
+                               }
+
+                               //receives the event parameter from addEventListener high order function
+                               function logEventType(event) {
+                                 console.log(event.type);
+                               }
+
+                               let myBtn = document.querySelector("#myBtn");
+
+                               //attach myFun2 in addition to myFun to the click event of myBtn
+                               myBtn.addEventListener("click", myFun2);
+
+                               //There are other events such as mouseover and mouseout
+
+                               //Any callback passed to addeventListener receives an event object
+                               myBtn.addEventListener("mouseover", logEventType); //logs 'mouseover'
+                               myBtn.addEventListener("mouseout", logEventType); // logs 'mouseout'
+                               //these events will fire when the mouse pointer hovers/passes over the button
+
+                               let bob = {
+                                 name: "Bob",
+                                 balance: 10,
+                               };
+
+                               function add10(a) {
+                                 a.balance += 10; // a is a pointer/reference to myObj
+                               }
+
+                               console.log(bob.balance); //10
+                               add10(bob);
+                               console.log(bob.balance); //20
+
+                               let obj2 = myobj;
+
+                               //obj2 and myobj are the same variable
+
+                               obj2.name = "Shelly";
+
+                               console.log(myobj.name); //Shelly
+
+                               //if you need to create a new object and copy its values use Object.assign
+
+                               let obj3 = {};
+                               Object.assign(obj3, myobj);
+
+                               obj3.name = "Smith";
+
+                               console.log(myobj.name, obj3.name); //Shelly, Smith
+
+                               let obj2 = myobj;
+
+                               //obj2 and myobj are the same variable
+
+                               obj2.name = "Shelly";
+
+                               console.log(myobj.name); //Shelly
+
+                               //if you need to create a new object and copy its values use Object.assign
+
+                               let obj3 = {};
+                               Object.assign(obj3, myobj);
+
+                               obj3.name = "Smith";
+
+                               console.log(myobj.name, obj3.name); //Shelly, Smith
+                             */
+
+                             let record = {
+                            id: 1,
+                            name: "bob's",
+                            brewery_type: "fire",
+                            website_url:"https://bobs.com",
+                         }
+
+                         //*note the use of backticks
+                         //using string interpolation
+                         //a row in the table would look like;
+
+                         let row = `<tr>
+                             <td>${record.id}</td>
+                             <td>${record.name}</td>
+                             <td>${record.brewery_type}</td>
+                             <td>${recoard.website_url}</td>
+                         </tr>`;
+
+                         function drawTable(records){
+                       let result = document.querySelector('#result');
+                       //add html code inside of result
+                       let html = '';// create html string
+                       for(let record of records){
+                           //build html string
+                           html += `<tr>
+                             <td>${record.id}</td>
+                             <td>${record.name}</td>
+                             <td>${record.brewery_type}</td>
+                             <td>${record.website_url}</td>
+                           </tr>`;
+                       }
+                       result.innerHTML = html;//add html string to DOM
+                   }
+
+                   //testing the function
+                   drawTable([{
+                      id: 1,
+                      name: "bob's",
+                      brewery_type: "fire",
+                      website_url:"https://bobs.com"
+                   }]);
+
+                   //function MUST be declared async
+             async function getData(url){
+                try{
+                  let response = await fetch(url);//1. Send http request and get response
+                  let result = await response.json();//2. Get data from response
+                  drawTable(result);// 3. Do something with the data
+               }catch(e){
+                   console.log(e);//catch and log any errors
+               }
+             }
+             getData("https://api.openbrewerydb.org/breweries/search?query=harry")
+
+           async function getData(url, renderFun){
+               try{
+                 let response = await fetch(url);//1. Send http request and get response
+                 let result = await response.json();//2. Get data from response
+                 renderFun(result);// 3. Do something with the data
+               }catch(e){
+                   console.log(e);//catch and log any errors
+               }
+             }
+
+       //get all brewery data on page load and render a table
+       getData("https://api.openbrewerydb.org/breweries", drawTable)
+
+      function drawTable(records){
+           let result = document.querySelector('#result');
+           //add html code inside of result
+           let html = '';// create html string
+           for(let record of records){
+               //build html string
+               html += `<tr id="${record.id}">
+                 <td>${record.id}</td>
+                 <td>${record.name}</td>
+                 <td>${record.brewery_type}</td>
+                 <td><a href="#${record.id}" onclick="getData('https://api.openbrewerydb.org/breweries/${record.id}', drawDetails)" >View More Details</a></td>
+               </tr>`;
+           }
+           result.innerHTML = html;//add html string to DOM
+       }
     </script>
     <script src="script.js"></script>
   </body>
